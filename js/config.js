@@ -1,5 +1,5 @@
 const SITE_CONFIG = {
-    // domain: "cleanCLI.com",
+  // domain: "cleanCLI.com",
 
   contacts: [
     {
@@ -12,7 +12,9 @@ const SITE_CONFIG = {
       text: "15808324029",
       link: "tel:+8615808324029",
     },
-    { icon: "fab fa-weixin", text: "WeChat: zxt1075864516", link: null },
+    { icon: "fab fa-weixin", 
+      text: "WeChat: zxt1075864516",
+      link: null },
   ],
 
   defaultLang: "zh",
