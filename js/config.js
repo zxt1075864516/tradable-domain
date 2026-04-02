@@ -1,5 +1,5 @@
 const SITE_CONFIG = {
-    domain: "cleanCLI.com",
+    // domain: "cleanCLI.com",
 
   contacts: [
     {
