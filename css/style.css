@@ -1,0 +1,361 @@
+/* ============================
+   Global Reset & Base Styles
+============================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a1128, #121f40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* ============================
+   Main Container (Glassmorphism)
+============================ */
+.container {
+    max-width: 850px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 24px;
+    padding: 70px 40px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+
+    /* Core: Vertical single column layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Decorative Glows */
+.container::before,
+.container::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.container::before {
+    top: -50%;
+    right: -50%;
+    background: #38bdf8;
+}
+
+.container::after {
+    bottom: -50%;
+    left: -50%;
+    background: #818cf8;
+}
+
+/* ============================
+   Status Badge
+============================ */
+.status {
+    display: inline-block;
+    background: linear-gradient(90deg, #2563eb, #1d4ed8);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 35px;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+/* ============================
+   Domain Display
+============================ */
+.domain-container {
+    margin-bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+.domain {
+    /* Optimization: Fluid typography using clamp */
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 800;
+    color: #fff;
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    transition: all 0.5s ease;
+    /* Optimization: Prevent overflow for long domains */
+    word-break: break-all;
+    line-height: 1.2;
+    margin: 0 auto;
+}
+
+.domain::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    border-radius: 2px;
+    animation: highlight 3s infinite alternate;
+}
+
+.domain:hover {
+    transform: scale(1.02);
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+}
+
+@keyframes highlight {
+    0% {
+      width: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.6;
+    }
+    100% {
+      width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 1;
+    }
+}
+
+/* ============================
+   Countdown Module
+============================ */
+.countdown {
+    margin-bottom: 45px;
+    width: 100%;
+    text-align: center;
+}
+
+.countdown-title {
+    font-size: 17px;
+    color: #94a3b8;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.countdown-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.time-item {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 15px 22px;
+    border-radius: 12px;
+    font-size: 28px;
+    font-weight: 700;
+    min-width: 70px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Optimization: Tabular numbers to prevent width jumping */
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.time-sep {
+    font-size: 28px;
+    color: #38bdf8;
+    margin-top: -10px;
+}
+
+/* ============================
+   Description Text
+============================ */
+.desc {
+    font-size: 19px;
+    color: #e2e8f0;
+    margin-bottom: 60px;
+    line-height: 1.7;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================
+   Contact List - Forced Single Column
+============================ */
+.contact {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 19px;
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-item i {
+    color: #38bdf8;
+    font-size: 24px;
+}
+
+.contact-item a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-item a:hover {
+    color: #38bdf8;
+}
+
+/* ============================
+   Entrance Animations
+============================ */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+.container > * {
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+}
+
+.status { animation-delay: 0.1s; }
+.domain-container { animation-delay: 0.3s; }
+.countdown { animation-delay: 0.5s; }
+.desc { animation-delay: 0.7s; }
+.contact { animation-delay: 0.9s; }
+
+/* ============================
+   Copy Toast Notification
+============================ */
+.copy-tip {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(56, 189, 248, 0.95);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    z-index: 999;
+    /* Optimization: Safe area for iPhone X+ */
+    bottom: max(30px, env(safe-area-inset-bottom));
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+    animation: fadeInOut 1.5s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; bottom: 20px; }
+    20% { opacity: 1; bottom: 30px; }
+    80% { opacity: 1; bottom: 30px; }
+    100% { opacity: 0; bottom: 40px; }
+}
+
+/* ============================
+   Responsive Design
+============================ */
+@media (max-width: 768px) {
+    .container {
+      padding: 50px 25px;
+      border-radius: 20px;
+    }
+  
+    .contact {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .contact-item {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .time-item {
+      min-width: 55px;
+      padding: 12px 15px;
+      font-size: 22px;
+    }
+  
+    .time-sep {
+      font-size: 22px;
+    }
+}
+
+/* ============================
+   Language Selector
+============================ */
+.lang-selector {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+}
+.lang-select {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+.lang-select option {
+    background: #222;
+    color: #fff;
+}
